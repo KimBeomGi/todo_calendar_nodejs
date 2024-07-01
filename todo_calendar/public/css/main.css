@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Noto+Serif+KR:wght@200..900&display=swap');
+
+.noto-serif-kr {
+  font-family: "Noto Serif KR", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+.jua-regular {
+  font-family: "Jua", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.cfs-xl {
+  font-size: 2rem;
+}
+.cfs-l {
+  font-size: 1.75rem;
+}
+.cfs-m {
+  font-size: 1.5rem;
+}
+.cfs-s {
+  font-size: 1.25rem;
+}
+.cfs-xs {
+  font-size: 1rem;
+}
