@@ -27,6 +27,8 @@ const c_month = document.querySelector('#c_month');
 const c_date = document.querySelector('#c_date');
 const sel_start_date = document.querySelector('#sel_start_date');
 
+let isSelected = false
+
 // 년월일 선택 시에 실행되는 함수
 function selectDate() {
   selectedDay = new Date(selectedYear, selectedMonth - 1, selectedDate).toLocaleDateString('ko-KR', { weekday: 'short' });
@@ -40,17 +42,31 @@ function selectDate() {
 function updateYearOptions() {
   let yearOptions = '';
   for (let j = 0; j < yearBoundary.length; j++) {
-    yearOptions += `<p class="selectDateP ${selectedYear === yearBoundary[j] ? 'sel_ok' : ''}" onclick="clickYear(${yearBoundary[j]})">${yearBoundary[j]}</p>`;
+    yearOptions += `<p id="year-${yearBoundary[j]}" class="selectDateP ${selectedYear === yearBoundary[j] ? 'sel_ok' : ''}" onclick="clickYear(${yearBoundary[j]})">${yearBoundary[j]}</p>`;
   }
   c_year.innerHTML = yearOptions;
+  const initialSelectedElement = document.getElementById(`year-${selectedYear}`)
+  if(initialSelectedElement){
+    initialSelectedElement.scrollIntoView({
+      behavior: !isSelected?'auto':"smooth",
+      block: 'center'
+    })
+  }
 }
 
 function updateMonthOptions() {
   let monthOptions = '';
   for (let k = 0; k < monthBoundary.length; k++) {
-    monthOptions += `<p class="selectDateP ${selectedMonth === monthBoundary[k] ? 'sel_ok' : ''}" onclick="clickMonth(${monthBoundary[k]})">${monthBoundary[k]}</p>`;
+    monthOptions += `<p id="month-${monthBoundary[k]}" class="selectDateP ${selectedMonth === monthBoundary[k] ? 'sel_ok' : ''}" onclick="clickMonth(${monthBoundary[k]})">${monthBoundary[k]}</p>`;
   }
   c_month.innerHTML = monthOptions;
+  const initialSelectedElement = document.getElementById(`month-${selectedMonth}`)
+  if(initialSelectedElement){
+    initialSelectedElement.scrollIntoView({
+      behavior: !isSelected?'auto':"smooth",
+      block: 'center'
+    })
+  }
 }
 
 function updateDateOptions() {
@@ -62,23 +78,39 @@ function updateDateOptions() {
 
   let dateOptions = '';
   for (let l = 0; l < dateBoundary.length; l++) {
-    dateOptions += `<p class="selectDateP ${selectedDate === dateBoundary[l] ? 'sel_ok' : ''}" onclick="clickDate(${dateBoundary[l]})">${dateBoundary[l]}</p>`;
+    dateOptions += `<p id="date-${dateBoundary[l]}" class="selectDateP ${selectedDate === dateBoundary[l] ? 'sel_ok' : ''}" onclick="clickDate(${dateBoundary[l]})">${dateBoundary[l]}</p>`;
   }
   c_date.innerHTML = dateOptions;
+  const initialSelectedElement = document.getElementById(`date-${selectedDate}`)
+  if(initialSelectedElement){
+    initialSelectedElement.scrollIntoView({
+      behavior: !isSelected?'auto':"smooth",
+      block: 'center'
+    })
+  }
 }
 
 function clickYear(sel_year) {
   selectedYear = sel_year;
+  if(!isSelected){
+    isSelected = true
+  }
   selectDate();
 }
 
 function clickMonth(sel_month) {
   selectedMonth = sel_month;
+  if(!isSelected){
+    isSelected = true
+  }
   selectDate();
 }
 
 function clickDate(sel_date) {
   selectedDate = sel_date;
+  if(!isSelected){
+    isSelected = true
+  }
   selectDate();
 }
 
