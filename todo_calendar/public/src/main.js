@@ -120,8 +120,11 @@ const prevMonth = () => {
   // console.log(theDay)
   const tmpYear = theDay.getFullYear()
   const tmpMonth = theDay.getMonth()
-  const tmpDate = theDay.getDate()
-  const tmpDay = theDay.getDay()
+  // const tmpDate = theDay.getDate()
+  const tmpDate = new Date(tmpYear, tmpMonth, 1).getDate()
+  // const tmpDay = theDay.getDay()
+  const tmpDay = new Date(tmpYear, tmpMonth, 1).getDay()
+  // console.log('투데이', tmpDate, tmpDay)
   console.log(`오늘임 ${todayyear}. ${todaymonth + 1}. ${todaydate}. (${dayToStr[todayday]})` )
   if(tmpYear == todayyear && tmpMonth == todaymonth){
     selectedDate = { year : todayyear, month : todaymonth + 1, date: todaydate, day : todayday };
@@ -138,8 +141,11 @@ const nextMonth = () => {
   // console.log(theDay)
   const tmpYear = theDay.getFullYear()
   const tmpMonth = theDay.getMonth()
-  const tmpDate = theDay.getDate()
-  const tmpDay = theDay.getDay()
+  // const tmpDate = theDay.getDate()
+  const tmpDate = new Date(tmpYear, tmpMonth, 1).getDate()
+  // const tmpDay = theDay.getDay()
+  const tmpDay = new Date(tmpYear, tmpMonth, 1).getDay()
+  // console.log('투데이', tmpDate, tmpDay)
   console.log(`오늘임 ${todayyear}. ${todaymonth + 1}. ${todaydate}. (${dayToStr[todayday]})` )
   if(tmpYear == todayyear && tmpMonth == todaymonth){
     selectedDate = { year : todayyear, month : todaymonth + 1, date: todaydate, day : todayday };
