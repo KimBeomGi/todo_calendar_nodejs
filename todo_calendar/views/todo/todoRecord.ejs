@@ -3,11 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>일정 추가</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/todoRecords.css">
 </head>
-<body>
+<body class="noto-serif-kr">
   <div>
     <h1>여기는 todorecord.ejs</h1>
+    <form action="">
+      <!-- <input type="text" placeholder="제목" value="" name="title" size="10">
+      <input type="color" value="#de66ff">
+      <input type="text" placeholder="메모" name="content"  size="10">
+      <input type="text" placeholder="장소" name="location" size="10">
+      <input type="date" name="start_date" required size="10">
+      <input type="time" name="start_time" required size="10">
+      <input type="date" name="end_date" required size="10">
+      <input type="time" name="end_time" required size="10"> -->
+      <!-- 커스텀 date -->
+      <div>
+        <p id="sel_start_date">0000년 00월 00일 (월)</p>
+      </div>
+      <input type="hidden" value="" id="c_dateInput">
+      <div id="c_dateDiv" class="flex-row">
+        <div id="c_year"></div>
+        <div id="c_month"></div>
+        <div id="c_date"></div>
+      </div>
+      <!-- 커스텀 time -->
+      <input type="hidden" value="" id="c_timeInput">
+      <div id="c_timeDiv">
+        <div id="c_hour"></div>
+        <div id="c_minute"></div>
+      </div>
+    </form>
   </div>
+  <script src="/src/todoRecord.js"></script>
 </body>
 </html>

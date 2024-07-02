@@ -8,7 +8,7 @@ router.get('/1', (request, response) => {
   response.render('todo/todos.ejs', {  });
 });
 router.get('/record', (request, response) => {
-  response.render('todo/todos.ejs', {  });
+  response.render('todo/todoRecord.ejs', {  });
 })
 
 module.exports = router
