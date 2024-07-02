@@ -113,8 +113,6 @@ const renderCalendar = () => {
         date.classList.add('today');
         break;
       }
-      // date.classList.add('today')
-      // break
     }
   }
 }
