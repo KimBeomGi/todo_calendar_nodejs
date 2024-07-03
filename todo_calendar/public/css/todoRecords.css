@@ -11,21 +11,23 @@
   align-items: center;
 }
 
-#cs_dateDiv{
+.dateSelSection{
   width: 15rem;
   height: 9rem;
   border: 1px solid black;
   overflow: hidden; 
-
+  background: #ffffff;
+  position: absolute;
+  z-index: 1;
 }
 
-#cs_dateDiv >div{
+.dateSelSection >div{
   width: 5rem;
   text-align: center;
   scrollbar-width: none;
   overflow: scroll; 
 }
-#cs_dateDiv >div::-webkit-scrollbar {
+.dateSelSection >div::-webkit-scrollbar {
   /* for Chrome, Safari, and Opera */
   display: none; 
 }
@@ -53,13 +55,9 @@
   visibility: hidden;
 }
 
-#cs_dateDiv{
-  background: #ffffff;
-  position: absolute;
-  z-index: 1;
-}
 
-#sel_sdate_div{
+
+.pointer{
   cursor: pointer;
 }
 
