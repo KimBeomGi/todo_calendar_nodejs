@@ -26,7 +26,8 @@
   overflow: scroll; 
 }
 #cs_dateDiv >div::-webkit-scrollbar {
-  display: none; /* for Chrome, Safari, and Opera */
+  /* for Chrome, Safari, and Opera */
+  display: none; 
 }
 
 .selectDateP{
@@ -60,4 +61,14 @@
 
 #sel_sdate_div{
   cursor: pointer;
+}
+
+.scrollSection{
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  /* scroll-behavior: smooth; */
+}
+
+.scrollSection > .selectDateP{
+  scroll-snap-align: center;
 }

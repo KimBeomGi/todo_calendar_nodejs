@@ -27,14 +27,16 @@ const cs_month = document.querySelector('#cs_month');
 const cs_date = document.querySelector('#cs_date');
 const sel_sdate = document.querySelector('#sel_sdate');
 
-let isSelected = false
+let isSelected1 = false
+
+// 사이즈 변경될 때 이게 변경되야할 텐데...
+let scrollingHeight = 48 // 3rem
 
 // 년월일 선택 시에 실행되는 함수
 function selectDate() {
   updateYearOptions();
   updateMonthOptions();
   updateDateOptions();
-
   selectedDay = new Date(selectedYear, selectedMonth - 1, selectedDate).toLocaleDateString('ko-KR', { weekday: 'short' });
   sel_sdate.innerText = `${selectedYear}년 ${selectedMonth}월 ${selectedDate}일 (${selectedDay})`;
 }
@@ -45,16 +47,16 @@ function updateYearOptions() {
     yearOptions += `<p id="year-${yearBoundary[j]}" class="selectDateP ${selectedYear === yearBoundary[j] ? 'sel_ok' : ''}" onclick="clickYear(${yearBoundary[j]})">${yearBoundary[j]}</p>`;
   }
   cs_year.innerHTML = yearOptions;
-  const initialSelectedElement = document.getElementById(`year-${selectedYear}`)
-  setTimeout(() => {
-    if(initialSelectedElement){
-      initialSelectedElement.scrollIntoView({
-        behavior: !isSelected?'auto':"smooth",
-        block: 'center'
-      })
-    }
-
-  }, 0)
+  const yearIndex = yearBoundary.indexOf(selectedYear)
+  if(yearIndex != -1){
+    const movingY = ((yearIndex -1) * scrollingHeight)
+    cs_year.scroll({
+      top: movingY,
+      left: 0,
+      behavior: "smooth",
+    })
+  }
+  // const initialSelectedElement = document.getElementById(`year-${selectedYear}`)
 }
 
 function updateMonthOptions() {
@@ -63,13 +65,17 @@ function updateMonthOptions() {
     monthOptions += `<p id="month-${monthBoundary[k]}" class="selectDateP ${selectedMonth === monthBoundary[k] ? 'sel_ok' : ''}" onclick="clickMonth(${monthBoundary[k]})">${monthBoundary[k]}</p>`;
   }
   cs_month.innerHTML = monthOptions;
-  const initialSelectedElement = document.getElementById(`month-${selectedMonth}`)
-  if(initialSelectedElement){
-    initialSelectedElement.scrollIntoView({
-      behavior: !isSelected?'auto':"smooth",
-      block: 'center'
+
+  const monthIndex = monthBoundary.indexOf(selectedMonth)
+  if(monthIndex != -1){
+    const movingY = ((monthIndex -1) * scrollingHeight)
+    cs_month.scroll({
+      top: movingY,
+      left: 0,
+      behavior: "smooth",
     })
   }
+  // const initialSelectedElement = document.getElementById(`month-${selectedMonth}`)
 }
 
 function updateDateOptions() {
@@ -87,37 +93,43 @@ function updateDateOptions() {
     dateOptions += `<p id="date-${dateBoundary[l]}" class="selectDateP ${selectedDate === dateBoundary[l] ? 'sel_ok' : ''}" onclick="clickDate(${dateBoundary[l]})">${dateBoundary[l]}</p>`;
   }
   cs_date.innerHTML = dateOptions;
-  const initialSelectedElement = document.getElementById(`date-${selectedDate}`)
-  if(initialSelectedElement){
-    initialSelectedElement.scrollIntoView({
-      behavior: !isSelected?'auto':"smooth",
-      block: 'center'
+
+  const dateIndex = dateBoundary.indexOf(selectedDate)
+  if(dateIndex != -1){
+    const movingY = ((dateIndex -1) * scrollingHeight)
+    cs_date.scroll({
+      top: movingY,
+      left: 0,
+      behavior: "smooth",
     })
   }
+  // const initialSelectedElement = document.getElementById(`date-${selectedDate}`)
 }
 
 function clickYear(sel_year) {
   selectedYear = sel_year;
-  if(!isSelected){
-    isSelected = true
+  if(!isSelected1){
+    isSelected1 = true
   }
   selectDate();
 }
 
 function clickMonth(sel_month) {
   selectedMonth = sel_month;
-  if(!isSelected){
-    isSelected = true
+  if(!isSelected1){
+    isSelected1 = true
   }
   selectDate();
 }
 
 function clickDate(sel_date) {
   selectedDate = sel_date;
-  if(!isSelected){
-    isSelected = true
+  if(!isSelected1){
+    isSelected1 = true
   }
   selectDate();
 }
 
 selectDate();
+
+
