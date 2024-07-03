@@ -8,74 +8,86 @@
   <link rel="stylesheet" href="/css/todoRecords.css">
 </head>
 <body class="noto-serif-kr">
-  <div>
-    <h1>여기는 todorecord.ejs</h1>
-    <form action="">
-      <!-- <input type="text" placeholder="제목" value="" name="title" size="10">
-      <input type="color" value="#de66ff">
-      <input type="text" placeholder="메모" name="content"  size="10">
-      <input type="text" placeholder="장소" name="location" size="10">
-      <input type="date" name="start_date" required size="10">
-      <input type="time" name="start_time" required size="10">
-      <input type="date" name="end_date" required size="10">
-      <input type="time" name="end_time" required size="10"> -->
-      
-      <div class="flex-row">
-        <!-- 커스텀 date -->
-        <!-- 시작일 -->
-        <div>
-          <div id="sel_date_div1" class="pointer">
-            <p id="sel_date1">0000년 00월 00일 (월)</p>
+  <div class="todoRecordContainer">
+    <h1>일정 추가</h1>
+    <form action="" method="POST">
+      <div class="inputContainer">
+        <!-- <input type="text" placeholder="제목" value="" name="title" size="10">
+        <input type="color" value="#de66ff">
+        <input type="text" placeholder="메모" name="content"  size="10">
+        <input type="text" placeholder="장소" name="location" size="10">
+        <input type="date" name="start_date" required size="10">
+        <input type="time" name="start_time" required size="10">
+        <input type="date" name="end_date" required size="10">
+        <input type="time" name="end_time" required size="10"> -->
+        <div class="flex-column">
+          <div class="flex-row marginYm">
+            <input class="inputDefault noto-serif-kr" type="text" placeholder="제목" value="" name="title" size="10">
+            <input class="colorInput" type="color" value="#de66ff">
           </div>
-          <input type="hidden" value="" id="dateInput1">
-          <div id="dateDiv1" class="flex-row dateSelSection">
-            <div id="year1" class="scrollSection"></div>
-            <div id="month1" class="scrollSection"></div>
-            <div id="date1" class="scrollSection"></div>
-          </div>
+          <input class="marginYm inputDefault border_default noto-serif-kr" type="text" placeholder="메모" name="content"  size="10">
+          <input class="marginYm inputDefault border_default noto-serif-kr" type="text" placeholder="장소" name="location" size="10">
         </div>
-        <!-- 커스텀 time -->
-        <!-- 시작시간 -->
-        <div class="pointer">
-          <div>
-            <p>00시 00분</p>
+        
+        <div class="flex-row justi_between marginYm">
+          <div class="flex-row">
+            <!-- 커스텀 date -->
+            <!-- 시작일 -->
+            <div class="marginXsm">
+              <div id="sel_date_div1" class="pointer">
+                <p id="sel_date1">0000년 00월 00일 (월)</p>
+              </div>
+              <input type="hidden" value="" id="dateInput1">
+              <div id="dateDiv1" class="flex-row dateSelSection">
+                <div id="year1" class="scrollSection"></div>
+                <div id="month1" class="scrollSection"></div>
+                <div id="date1" class="scrollSection"></div>
+              </div>
+            </div>
+            <!-- 커스텀 time -->
+            <!-- 시작시간 -->
+            <div class="marginXsm">
+              <div class="pointer">
+                <p>00시 00분</p>
+              </div>
+              <input type="hidden" value="" id="timeInput1">
+              <div id="timeDiv1">
+                <div id="hour1"></div>
+                <div id="minute1"></div>
+              </div>
+            </div>
           </div>
-          <input type="hidden" value="" id="timeInput1">
-          <div id="timeDiv1">
-            <div id="hour1"></div>
-            <div id="minute1"></div>
-          </div>
-        </div>
-      </div>
 
-      <div class="flex-row">
-        <!-- 커스텀 date -->
-        <!-- 종료일 -->
-        <div>
-          <div id="sel_date_div2" class="pointer">
-            <p id="sel_date2">0000년 00월 00일 (월)</p>
-          </div>
-          <input type="hidden" value="" id="dateInput2">
-          <div id="dateDiv2" class="flex-row dateSelSection">
-            <div id="year2" class="scrollSection"></div>
-            <div id="month2" class="scrollSection"></div>
-            <div id="date2" class="scrollSection"></div>
+          <div class="flex-row">
+            <!-- 커스텀 date -->
+            <!-- 종료일 -->
+            <div class="marginXsm">
+              <div id="sel_date_div2" class="pointer">
+                <p id="sel_date2">0000년 00월 00일 (월)</p>
+              </div>
+              <input type="hidden" value="" id="dateInput2">
+              <div id="dateDiv2" class="flex-row dateSelSection">
+                <div id="year2" class="scrollSection"></div>
+                <div id="month2" class="scrollSection"></div>
+                <div id="date2" class="scrollSection"></div>
+              </div>
+            </div>
+            <!-- 커스텀 time -->
+            <!-- 종료시간 -->
+            <div class="marginXsm">
+              <div class="pointer">
+                <p>00시 00분</p>
+              </div>
+              <input type="hidden" value="" id="timeInput2">
+              <div id="timeDiv2">
+                <div id="hour2"></div>
+                <div id="minute2"></div>
+              </div>
+            </div>
           </div>
         </div>
-        <!-- 커스텀 time -->
-        <!-- 종료시간 -->
-        <div class="pointer">
-          <div>
-            <p>00시 00분</p>
-          </div>
-          <input type="hidden" value="" id="timeInput2">
-          <div id="timeDiv2">
-            <div id="hour2"></div>
-            <div id="minute2"></div>
-          </div>
-        </div>
+        <input class="submitInput noto-serif-kr" type="submit" value="일정 추가">
       </div>
-      <input type="submit">
     </form>
   </div>
   <script src="/src/todorecord.js"></script>

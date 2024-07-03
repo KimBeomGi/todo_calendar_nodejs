@@ -33,18 +33,18 @@ let isSelected1 = false
 let scrollingHeight = 48 // 3rem
 
 // 년월일 선택 시에 실행되는 함수
-function selectDate() {
-  updateYearOptions();
-  updateMonthOptions();
-  updateDateOptions();
+function selectDate1() {
+  updateYearOptions1();
+  updateMonthOptions1();
+  updateDateOptions1();
   selectedDay1 = new Date(selectedYear1, selectedMonth1 - 1, selectedDate1).toLocaleDateString('ko-KR', { weekday: 'short' });
   sel_date1.innerText = `${selectedYear1}년 ${selectedMonth1}월 ${selectedDate1}일 (${selectedDay1})`;
 }
 
-function updateYearOptions() {
+function updateYearOptions1() {
   let yearOptions = '';
   for (let j = 0; j < yearBoundary1.length; j++) {
-    yearOptions += `<p id="year-${yearBoundary1[j]}" class="selectDateP ${selectedYear1 === yearBoundary1[j] ? 'sel_ok' : ''}" onclick="clickYear(${yearBoundary1[j]})">${yearBoundary1[j]}</p>`;
+    yearOptions += `<p id="year-${yearBoundary1[j]}" class="selectDateP ${selectedYear1 === yearBoundary1[j] ? 'sel_ok' : ''}" onclick="clickYear1(${yearBoundary1[j]})">${yearBoundary1[j]}</p>`;
   }
   year1.innerHTML = yearOptions;
   const yearIndex = yearBoundary1.indexOf(selectedYear1)
@@ -59,10 +59,10 @@ function updateYearOptions() {
   // const initialSelectedElement = document.getElementById(`year-${selectedYear1}`)
 }
 
-function updateMonthOptions() {
+function updateMonthOptions1() {
   let monthOptions = '';
   for (let k = 0; k < monthBoundary1.length; k++) {
-    monthOptions += `<p id="month-${monthBoundary1[k]}" class="selectDateP ${selectedMonth1 === monthBoundary1[k] ? 'sel_ok' : ''}" onclick="clickMonth(${monthBoundary1[k]})">${monthBoundary1[k]}</p>`;
+    monthOptions += `<p id="month-${monthBoundary1[k]}" class="selectDateP ${selectedMonth1 === monthBoundary1[k] ? 'sel_ok' : ''}" onclick="clickMonth1(${monthBoundary1[k]})">${monthBoundary1[k]}</p>`;
   }
   month1.innerHTML = monthOptions;
 
@@ -78,7 +78,7 @@ function updateMonthOptions() {
   // const initialSelectedElement = document.getElementById(`month-${selectedMonth1}`)
 }
 
-function updateDateOptions() {
+function updateDateOptions1() {
   dateBoundary1 = [];
   const lastdate = new Date(selectedYear1, selectedMonth1, 0).getDate(); // 선택한 달의 마지막 날 확인
   for (let i = 1; i <= lastdate; i++) {
@@ -90,7 +90,7 @@ function updateDateOptions() {
 
   let dateOptions = '';
   for (let l = 0; l < dateBoundary1.length; l++) {
-    dateOptions += `<p id="date-${dateBoundary1[l]}" class="selectDateP ${selectedDate1 === dateBoundary1[l] ? 'sel_ok' : ''}" onclick="clickDate(${dateBoundary1[l]})">${dateBoundary1[l]}</p>`;
+    dateOptions += `<p id="date-${dateBoundary1[l]}" class="selectDateP ${selectedDate1 === dateBoundary1[l] ? 'sel_ok' : ''}" onclick="clickDate1(${dateBoundary1[l]})">${dateBoundary1[l]}</p>`;
   }
   date1.innerHTML = dateOptions;
 
@@ -106,30 +106,30 @@ function updateDateOptions() {
   // const initialSelectedElement = document.getElementById(`date-${selectedDate1}`)
 }
 
-function clickYear(sel_year) {
+function clickYear1(sel_year) {
   selectedYear1 = sel_year;
   if(!isSelected1){
     isSelected1 = true
   }
-  selectDate();
+  selectDate1();
 }
 
-function clickMonth(sel_month) {
+function clickMonth1(sel_month) {
   selectedMonth1 = sel_month;
   if(!isSelected1){
     isSelected1 = true
   }
-  selectDate();
+  selectDate1();
 }
 
-function clickDate(sel_date) {
+function clickDate1(sel_date) {
   selectedDate1 = sel_date;
   if(!isSelected1){
     isSelected1 = true
   }
-  selectDate();
+  selectDate1();
 }
 
-selectDate();
+selectDate1();
 
 

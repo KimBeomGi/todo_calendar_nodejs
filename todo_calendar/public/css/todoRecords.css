@@ -11,6 +11,10 @@
   align-items: center;
 }
 
+.justi_between{
+  justify-content: space-evenly;
+}
+
 .dateSelSection{
   width: 15rem;
   height: 9rem;
@@ -67,4 +71,64 @@
 
 .scrollSection > .selectDateP{
   scroll-snap-align: center;
+}
+
+.border_default {
+  border: 1px solid #000000;
+  box-sizing: border-box;
+}
+
+
+.todoRecordContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputContainer {
+  width: 786px;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.marginXsm{
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+.marginYsm{
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.marginYm{
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Input */
+.colorInput{
+  border: 0px;
+  box-sizing: border-box;
+  padding: 0;
+  width: 3rem;
+  height: 3rem;
+}
+
+.submitInput{
+  border: 0px;
+  border-radius: 12px;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  font-size: 1.25rem;
+  background: #2587e3;
+  color: #ffffff;
+}
+
+.inputDefault{
+  height: 3rem;
+  /* border-radius: 12px; */
+  border: 0px;
+  border-bottom: 1px solid black;
 }

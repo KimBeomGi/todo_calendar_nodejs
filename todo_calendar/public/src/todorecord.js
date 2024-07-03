@@ -36,17 +36,3 @@ sel_date_div2.addEventListener('click', () => {
   isViewDate2 = !isViewDate2
   handleStateChange()
 })
-
-// // 일단 클릭 이벤트 여부 확인
-// document.addEventListener('click', (event) => {
-//   // sel_date_div1 또는 dateDiv1 클릭한게 아니라면 isViewDate1 = false
-//   if (!sel_date_div1.contains(event.target) && !dateDiv1.contains(event.target)) {
-//       isViewDate1 = false;
-//   }
-//   // sel_date_div2 또는 dateDiv2 클릭한게 아니라면 isViewDate2 = false
-//   if (!sel_date_div2.contains(event.target) && !dateDiv2.contains(event.target)) {
-//       isViewDate2 = false;
-//   }
-//   //
-//   handleStateChange();
-// });
