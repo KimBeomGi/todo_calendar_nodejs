@@ -20,14 +20,29 @@
       <input type="date" name="end_date" required size="10">
       <input type="time" name="end_time" required size="10"> -->
       <!-- 커스텀 date -->
+      <!-- 시작일 -->
       <div>
-        <p id="sel_start_date">0000년 00월 00일 (월)</p>
+        <div id="sel_sdate_div">
+          <p id="sel_sdate">0000년 00월 00일 (월)</p>
+        </div>
+        <input type="hidden" value="" id="cs_dateInput">
+        <div id="cs_dateDiv" class="flex-row">
+          <div id="cs_year"></div>
+          <div id="cs_month"></div>
+          <div id="cs_date"></div>
+        </div>
       </div>
-      <input type="hidden" value="" id="c_dateInput">
-      <div id="c_dateDiv" class="flex-row">
-        <div id="c_year"></div>
-        <div id="c_month"></div>
-        <div id="c_date"></div>
+      <!-- 종료일 -->
+      <div>
+        <div id="sel_edate_div">
+          <p id="sel_edate">0000년 00월 00일 (월)</p>
+        </div>
+        <input type="hidden" value="" id="ce_dateInput">
+        <div id="ce_dateDiv" class="flex-row">
+          <div id="ce_year"></div>
+          <div id="ce_month"></div>
+          <div id="ce_date"></div>
+        </div>
       </div>
       <!-- 커스텀 time -->
       <input type="hidden" value="" id="c_timeInput">
@@ -37,6 +52,8 @@
       </div>
     </form>
   </div>
+  <script src="/src/todorecord.js"></script>
   <script src="/src/todoRecord1.js"></script>
+  <script src="/src/todoRecord2.js"></script>
 </body>
 </html>

@@ -22,21 +22,21 @@ const monthBoundary = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 let dateBoundary; // 달마다 매번 달라짐
 
 // 선택 Input을 생성하기 위해 가져옴
-const c_year = document.querySelector('#c_year');
-const c_month = document.querySelector('#c_month');
-const c_date = document.querySelector('#c_date');
-const sel_start_date = document.querySelector('#sel_start_date');
+const cs_year = document.querySelector('#cs_year');
+const cs_month = document.querySelector('#cs_month');
+const cs_date = document.querySelector('#cs_date');
+const sel_sdate = document.querySelector('#sel_sdate');
 
 let isSelected = false
 
 // 년월일 선택 시에 실행되는 함수
 function selectDate() {
-  selectedDay = new Date(selectedYear, selectedMonth - 1, selectedDate).toLocaleDateString('ko-KR', { weekday: 'short' });
-  sel_start_date.innerText = `${selectedYear}년 ${selectedMonth}월 ${selectedDate}일 (${selectedDay})`;
-
   updateYearOptions();
   updateMonthOptions();
   updateDateOptions();
+
+  selectedDay = new Date(selectedYear, selectedMonth - 1, selectedDate).toLocaleDateString('ko-KR', { weekday: 'short' });
+  sel_sdate.innerText = `${selectedYear}년 ${selectedMonth}월 ${selectedDate}일 (${selectedDay})`;
 }
 
 function updateYearOptions() {
@@ -44,14 +44,17 @@ function updateYearOptions() {
   for (let j = 0; j < yearBoundary.length; j++) {
     yearOptions += `<p id="year-${yearBoundary[j]}" class="selectDateP ${selectedYear === yearBoundary[j] ? 'sel_ok' : ''}" onclick="clickYear(${yearBoundary[j]})">${yearBoundary[j]}</p>`;
   }
-  c_year.innerHTML = yearOptions;
+  cs_year.innerHTML = yearOptions;
   const initialSelectedElement = document.getElementById(`year-${selectedYear}`)
-  if(initialSelectedElement){
-    initialSelectedElement.scrollIntoView({
-      behavior: !isSelected?'auto':"smooth",
-      block: 'center'
-    })
-  }
+  setTimeout(() => {
+    if(initialSelectedElement){
+      initialSelectedElement.scrollIntoView({
+        behavior: !isSelected?'auto':"smooth",
+        block: 'center'
+      })
+    }
+
+  }, 0)
 }
 
 function updateMonthOptions() {
@@ -59,7 +62,7 @@ function updateMonthOptions() {
   for (let k = 0; k < monthBoundary.length; k++) {
     monthOptions += `<p id="month-${monthBoundary[k]}" class="selectDateP ${selectedMonth === monthBoundary[k] ? 'sel_ok' : ''}" onclick="clickMonth(${monthBoundary[k]})">${monthBoundary[k]}</p>`;
   }
-  c_month.innerHTML = monthOptions;
+  cs_month.innerHTML = monthOptions;
   const initialSelectedElement = document.getElementById(`month-${selectedMonth}`)
   if(initialSelectedElement){
     initialSelectedElement.scrollIntoView({
@@ -75,12 +78,15 @@ function updateDateOptions() {
   for (let i = 1; i <= lastdate; i++) {
     dateBoundary.push(i);
   }
+  if(selectedDate > dateBoundary.length){
+    selectedDate = dateBoundary.length
+  }
 
   let dateOptions = '';
   for (let l = 0; l < dateBoundary.length; l++) {
     dateOptions += `<p id="date-${dateBoundary[l]}" class="selectDateP ${selectedDate === dateBoundary[l] ? 'sel_ok' : ''}" onclick="clickDate(${dateBoundary[l]})">${dateBoundary[l]}</p>`;
   }
-  c_date.innerHTML = dateOptions;
+  cs_date.innerHTML = dateOptions;
   const initialSelectedElement = document.getElementById(`date-${selectedDate}`)
   if(initialSelectedElement){
     initialSelectedElement.scrollIntoView({
