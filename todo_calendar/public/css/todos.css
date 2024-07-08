@@ -1,0 +1,14 @@
+.showColor {
+  border-radius: 50%;
+  width: 1rem;  /* 크기를 조금 더 키움 */
+  height: 1rem;  /* 크기를 조금 더 키움 */
+}
+
+.todoBorder {
+  padding: 1rem;
+  border-bottom: 1px solid #000000;
+  border-collapse: collapse;
+  display: flex;
+  flex-direction: column;
+}
+

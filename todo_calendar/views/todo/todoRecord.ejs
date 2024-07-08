@@ -10,7 +10,7 @@
 <body class="noto-serif-kr">
   <div class="todoRecordContainer">
     <h1>일정 추가</h1>
-    <form action="" method="POST">
+    <form action="/todo/record/create" method="POST" id="scheduleForm">
       <div class="inputContainer">
         <!-- <input type="text" placeholder="제목" value="" name="title" size="10">
         <input type="color" value="#de66ff">
@@ -22,22 +22,22 @@
         <input type="time" name="end_time" required size="10"> -->
         <div class="flex-column">
           <div class="flex-row marginYm">
-            <input class="inputDefault noto-serif-kr" type="text" placeholder="제목" value="" name="title" size="10">
-            <input class="colorInput" type="color" value="#de66ff">
+            <input class="inputDefault noto-serif-kr" type="text" placeholder="제목" value="" name="title" size="10" id="titleInput">
+            <input class="colorInput pointer" type="color" value="#de66ff" name="color">
           </div>
-          <input class="marginYm inputDefault border_default noto-serif-kr" type="text" placeholder="메모" name="content"  size="10">
-          <input class="marginYm inputDefault border_default noto-serif-kr" type="text" placeholder="장소" name="location" size="10">
+          <input class="marginYm inputDefault border_default noto-serif-kr" type="text" placeholder="메모" name="content"  size="10" id="contentInput">
+          <input class="marginYm inputDefault border_default noto-serif-kr" type="text" placeholder="장소" name="location" size="10" id="locationInput">
         </div>
         
         <div class="flex-row justi_between marginYm">
           <div class="flex-row">
             <!-- 커스텀 date -->
             <!-- 시작일 -->
-            <div class="marginXsm">
+            <div class="marginXsm position_relative">
               <div id="sel_date_div1" class="pointer">
                 <p id="sel_date1">0000년 00월 00일 (월)</p>
               </div>
-              <input type="hidden" value="" id="dateInput1">
+              <input type="hidden" value="" id="dateInput1" name="start_date">
               <div id="dateDiv1" class="flex-row dateSelSection">
                 <div id="year1" class="scrollSection"></div>
                 <div id="month1" class="scrollSection"></div>
@@ -46,14 +46,14 @@
             </div>
             <!-- 커스텀 time -->
             <!-- 시작시간 -->
-            <div class="marginXsm">
-              <div class="pointer">
-                <p>00시 00분</p>
+            <div class="marginXsm position_relative">
+              <div id="sel_time_div1" class="pointer">
+                <p id="sel_time1">00시 00분</p>
               </div>
-              <input type="hidden" value="" id="timeInput1">
-              <div id="timeDiv1">
-                <div id="hour1"></div>
-                <div id="minute1"></div>
+              <input type="hidden" value="" id="timeInput1" name="start_time">
+              <div id="timeDiv1" class="flex-row timeSelSection">
+                <div id="hour1" class="scrollSection"></div>
+                <div id="minutes1" class="scrollSection"></div>
               </div>
             </div>
           </div>
@@ -61,11 +61,11 @@
           <div class="flex-row">
             <!-- 커스텀 date -->
             <!-- 종료일 -->
-            <div class="marginXsm">
+            <div class="marginXsm position_relative">
               <div id="sel_date_div2" class="pointer">
                 <p id="sel_date2">0000년 00월 00일 (월)</p>
               </div>
-              <input type="hidden" value="" id="dateInput2">
+              <input type="hidden" value="" id="dateInput2" name="end_date">
               <div id="dateDiv2" class="flex-row dateSelSection">
                 <div id="year2" class="scrollSection"></div>
                 <div id="month2" class="scrollSection"></div>
@@ -74,25 +74,26 @@
             </div>
             <!-- 커스텀 time -->
             <!-- 종료시간 -->
-            <div class="marginXsm">
-              <div class="pointer">
-                <p>00시 00분</p>
+            <div class="marginXsm position_relative">
+              <div id="sel_time_div2" class="pointer">
+                <p id="sel_time2">00시 00분</p>
               </div>
-              <input type="hidden" value="" id="timeInput2">
-              <div id="timeDiv2">
+              <input type="hidden" value="" id="timeInput2" name="end_time">
+              <div id="timeDiv2" class="flex-row timeSelSection">
                 <div id="hour2"></div>
-                <div id="minute2"></div>
+                <div id="minutes2"></div>
               </div>
             </div>
           </div>
         </div>
-        <input class="submitInput noto-serif-kr" type="submit" value="일정 추가">
+        <input class="submitInput noto-serif-kr pointer" type="submit" value="일정 추가">
       </div>
     </form>
   </div>
   <script src="/src/todorecord.js"></script>
   <script src="/src/todoRecord1.js"></script>
   <script src="/src/todoRecord2.js"></script>
+  <script src="/src/todoRecord3.js"></script>
   <script src="/src/todoRcordEnd.js"></script>
 </body>
 </html>

@@ -39,12 +39,13 @@ function selectDate2() {
   updateDateOptions2();
   selectedDay2 = new Date(selectedYear2, selectedMonth2 - 1, selectedDate2).toLocaleDateString('ko-KR', { weekday: 'short' });
   sel_date2.innerText = `${selectedYear2}년 ${selectedMonth2}월 ${selectedDate2}일 (${selectedDay2})`;
+  dateInput2.value = `${selectedYear2}-${selectedMonth2}-${selectedDate2}`
 }
 
 function updateYearOptions2() {
   let yearOptions = '';
   for (let j = 0; j < yearBoundary2.length; j++) {
-    yearOptions += `<p id="year-${yearBoundary2[j]}" class="selectDateP ${selectedYear2 === yearBoundary2[j] ? 'sel_ok' : ''}" onclick="clickYear2(${yearBoundary2[j]})">${yearBoundary2[j]}</p>`;
+    yearOptions += `<p id="year2-${yearBoundary2[j]}" class="selectDateP ${selectedYear2 === yearBoundary2[j] ? 'sel_ok' : ''}" onclick="clickYear2(${yearBoundary2[j]})">${yearBoundary2[j]}</p>`;
   }
   year2.innerHTML = yearOptions;
   const yearIndex = yearBoundary2.indexOf(selectedYear2)
@@ -62,7 +63,7 @@ function updateYearOptions2() {
 function updateMonthOptions2() {
   let monthOptions = '';
   for (let k = 0; k < monthBoundary2.length; k++) {
-    monthOptions += `<p id="month-${monthBoundary2[k]}" class="selectDateP ${selectedMonth2 === monthBoundary2[k] ? 'sel_ok' : ''}" onclick="clickMonth2(${monthBoundary2[k]})">${monthBoundary2[k]}</p>`;
+    monthOptions += `<p id="month2-${monthBoundary2[k]}" class="selectDateP ${selectedMonth2 === monthBoundary2[k] ? 'sel_ok' : ''}" onclick="clickMonth2(${monthBoundary2[k]})">${monthBoundary2[k]}</p>`;
   }
   month2.innerHTML = monthOptions;
 
@@ -90,7 +91,7 @@ function updateDateOptions2() {
 
   let dateOptions = '';
   for (let l = 0; l < dateBoundary2.length; l++) {
-    dateOptions += `<p id="date-${dateBoundary2[l]}" class="selectDateP ${selectedDate2 === dateBoundary2[l] ? 'sel_ok' : ''}" onclick="clickDate2(${dateBoundary2[l]})">${dateBoundary2[l]}</p>`;
+    dateOptions += `<p id="date2-${dateBoundary2[l]}" class="selectDateP ${selectedDate2 === dateBoundary2[l] ? 'sel_ok' : ''}" onclick="clickDate2(${dateBoundary2[l]})">${dateBoundary2[l]}</p>`;
   }
   date2.innerHTML = dateOptions;
 

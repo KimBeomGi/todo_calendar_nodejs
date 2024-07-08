@@ -1,3 +1,6 @@
+// 사이즈 변경될 때 이게 변경되야할 텐데...
+let scrollingHeight = 48 // 3rem
+
 // 년월일, 요일 정의
 let selectedYear1;
 let selectedMonth1;
@@ -29,9 +32,6 @@ const sel_date1 = document.querySelector('#sel_date1');
 
 let isSelected1 = false
 
-// 사이즈 변경될 때 이게 변경되야할 텐데...
-let scrollingHeight = 48 // 3rem
-
 // 년월일 선택 시에 실행되는 함수
 function selectDate1() {
   updateYearOptions1();
@@ -39,12 +39,13 @@ function selectDate1() {
   updateDateOptions1();
   selectedDay1 = new Date(selectedYear1, selectedMonth1 - 1, selectedDate1).toLocaleDateString('ko-KR', { weekday: 'short' });
   sel_date1.innerText = `${selectedYear1}년 ${selectedMonth1}월 ${selectedDate1}일 (${selectedDay1})`;
+  dateInput1.value = `${selectedYear1}-${selectedMonth1}-${selectedDate1}`
 }
 
 function updateYearOptions1() {
   let yearOptions = '';
   for (let j = 0; j < yearBoundary1.length; j++) {
-    yearOptions += `<p id="year-${yearBoundary1[j]}" class="selectDateP ${selectedYear1 === yearBoundary1[j] ? 'sel_ok' : ''}" onclick="clickYear1(${yearBoundary1[j]})">${yearBoundary1[j]}</p>`;
+    yearOptions += `<p id="year1-${yearBoundary1[j]}" class="selectDateP ${selectedYear1 === yearBoundary1[j] ? 'sel_ok' : ''}" onclick="clickYear1(${yearBoundary1[j]})">${yearBoundary1[j]}</p>`;
   }
   year1.innerHTML = yearOptions;
   const yearIndex = yearBoundary1.indexOf(selectedYear1)
@@ -62,7 +63,7 @@ function updateYearOptions1() {
 function updateMonthOptions1() {
   let monthOptions = '';
   for (let k = 0; k < monthBoundary1.length; k++) {
-    monthOptions += `<p id="month-${monthBoundary1[k]}" class="selectDateP ${selectedMonth1 === monthBoundary1[k] ? 'sel_ok' : ''}" onclick="clickMonth1(${monthBoundary1[k]})">${monthBoundary1[k]}</p>`;
+    monthOptions += `<p id="month1-${monthBoundary1[k]}" class="selectDateP ${selectedMonth1 === monthBoundary1[k] ? 'sel_ok' : ''}" onclick="clickMonth1(${monthBoundary1[k]})">${monthBoundary1[k]}</p>`;
   }
   month1.innerHTML = monthOptions;
 
@@ -90,7 +91,7 @@ function updateDateOptions1() {
 
   let dateOptions = '';
   for (let l = 0; l < dateBoundary1.length; l++) {
-    dateOptions += `<p id="date-${dateBoundary1[l]}" class="selectDateP ${selectedDate1 === dateBoundary1[l] ? 'sel_ok' : ''}" onclick="clickDate1(${dateBoundary1[l]})">${dateBoundary1[l]}</p>`;
+    dateOptions += `<p id="date1-${dateBoundary1[l]}" class="selectDateP ${selectedDate1 === dateBoundary1[l] ? 'sel_ok' : ''}" onclick="clickDate1(${dateBoundary1[l]})">${dateBoundary1[l]}</p>`;
   }
   date1.innerHTML = dateOptions;
 

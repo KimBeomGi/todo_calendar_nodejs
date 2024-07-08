@@ -27,3 +27,17 @@
 .cfs-xs {
   font-size: 1rem;
 }
+
+.flex-row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.center{
+  justify-content: center;
+  align-items: center;
+}
+.m_r_1rem{
+  margin-right: 1rem;
+}
