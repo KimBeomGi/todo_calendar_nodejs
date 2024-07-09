@@ -15,36 +15,42 @@
     <div>
       <!-- 오늘 날짜 표시 -->
       <div id="today"></div>
-      
-      <!-- 달력 표시 -->
-      <section class="calendar">
-        <div class="calender-header jua-regular cfs-xl">
-          <div class="calender-btn go-prev" onclick="prevMonth()">
-            &lt;
+      <div class="flex-row align-items-start justify-content-center">
+        <!-- 달력 표시 -->
+        <section class="calendar">
+          <div class="calender-header jua-regular cfs-xl">
+            <div class="calender-btn go-prev" onclick="prevMonth()">
+              &lt;
+            </div>
+            <div class="year-month"></div>
+            <div class="calender-btn go-next" onclick="nextMonth()">
+              &gt;
+            </div>
+            <div class="calender-btn go-today cfs-l" onclick="goToday()">
+              Today
+            </div>
           </div>
-          <div class="year-month"></div>
-          <div class="calender-btn go-next" onclick="nextMonth()">
-            &gt;
+          <div class="calendar-main">
+            <!-- 요일 표기 -->
+            <div class="days cfs-m">
+              <div class="day sunday">일</div>
+              <div class="day">월</div>
+              <div class="day">화</div>
+              <div class="day">수</div>
+              <div class="day">목</div>
+              <div class="day">금</div>
+              <div class="day saturday">토</div>
+            </div>
+            <!-- 날짜 표기 -->
+            <div class="dates"></div>
           </div>
-          <div class="calender-btn go-today cfs-l" onclick="goToday()">
-            Today
-          </div>
+        </section>
+        <div id="selectedDate_todos" class="m_l_2rem">
+          <h1>일정</h1>
+          <h2 id="selectedYMD">0000년 00월 00일</h2>
+          <div id="thisTodos"></div>
         </div>
-        <div class="calendar-main">
-          <!-- 요일 표기 -->
-          <div class="days cfs-m">
-            <div class="day sunday">일</div>
-            <div class="day">월</div>
-            <div class="day">화</div>
-            <div class="day">수</div>
-            <div class="day">목</div>
-            <div class="day">금</div>
-            <div class="day saturday">토</div>
-          </div>
-          <!-- 날짜 표기 -->
-          <div class="dates"></div>
-        </div>
-      </section>
+      </div>
     </div>
   </div>
   <script src="/src/main.js"></script>

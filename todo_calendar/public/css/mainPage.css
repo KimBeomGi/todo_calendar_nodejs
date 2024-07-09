@@ -7,7 +7,7 @@
   align-items: center;
   /* width: calc(min(80vw, 1000px)); */
   width: calc(min(80vw, 786 * 0.8px));
-  margin: auto;
+  /* margin: auto; */
   background: #c7efff;
   border-radius: 12px;
   cursor: default;

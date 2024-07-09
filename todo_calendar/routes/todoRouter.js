@@ -46,5 +46,13 @@ router.post('/record/create', (request, response) => {
   });
 });
 
+router.post('/detail', (request, response) => {
+  const data = request.body;
+  console.log(data); // 서버 콘솔에 데이터 출력
+  
+  // ejs 파일로 데이터를 전달하면서 렌더링
+  response.render('todo/todoDetail.ejs', { data });
+});
+
 
 module.exports = router

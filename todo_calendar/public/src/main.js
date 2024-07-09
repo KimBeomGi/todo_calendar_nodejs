@@ -17,6 +17,62 @@ today.appendChild(todaySpan)
 
 let selectedDate = null;
 
+
+const selectedDate_todos = document.querySelector('#selectedDate_todos')
+const selectedYMD = document.querySelector("#selectedYMD")
+// selectedYMD.innerText = `${todayyear}년 ${todaymonth+1}월 ${todaydate}일`
+const thisTodos = document.querySelector('#thisTodos')
+
+const todoGet = (year, month, date) => {
+  console.log('들어옴',year, month, date)
+  thisTodos.innerHTML = ""
+  fetch(`/gettodo?year=${year}&month=${month}&date=${date}`)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      for (let i = 0; i < data.length; i++) {
+        const div1 = document.createElement('div')
+        const title = document.createElement('p')
+        title.innerText = `${data[i].title}`
+        
+        div1.appendChild(title)
+        div1.classList.add('cursor-pointer')
+        thisTodos.appendChild(div1)
+        
+        div1.addEventListener('click', () => {
+          // POST 요청을 /todo/detail로 보냅니다.
+          fetch('/todo/detail', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data[i])
+          })
+          .then(response => response.text())
+          .then(html => {
+            // 서버에서 HTML을 반환하면 그 내용을 현재 페이지에 덮어씌웁니다.
+            document.open();
+            document.write(html);
+            document.close();
+          })
+          .catch(error => console.error('Error:', error));
+        })
+      }
+      // button1이 selectedDate_todos에 있으면 제거
+
+      const button1 = document.createElement('button')
+      button1.innerText = "일정 추가"
+      thisTodos.appendChild(button1)
+      button1.addEventListener('click', () => {
+        window.location.href = `/todo/record`
+      })
+      
+      renderCalendar()
+    })
+    .catch(error => console.error('Error fetching data:', error));
+};
+
+
 // 달력보여주는 함수
 const renderCalendar = () => {
   const viewYear = theDay.getFullYear()
@@ -100,7 +156,11 @@ const renderCalendar = () => {
     //   dates[k] = `<div class='date' onclick="checkTODO(${year}, ${month}, ${selectDate})"><span class=${condition}>${date}</span></div>`
     // }
   })
+
+
   console.log(selectedDate)
+  selectedYMD.innerText = `${selectedDate.year}년 ${selectedDate.month}월 ${selectedDate.date}일`
+
   document.querySelector('.dates').innerHTML = dates.join('')
 
   // 지금 보고있는 달력이 이번년 이번달 달력이면 this라는 클래스를 갖고있는 값을 돌려서,
@@ -123,7 +183,7 @@ const prevMonth = () => {
   const tmpYear = theDay.getFullYear()
   const tmpMonth = theDay.getMonth()
   // const tmpDate = theDay.getDate()
-  const tmpDate = new Date(tmpYear, tmpMonth, 1).getDate()
+  let tmpDate = new Date(tmpYear, tmpMonth, 1).getDate()
   // const tmpDay = theDay.getDay()
   const tmpDay = new Date(tmpYear, tmpMonth, 1).getDay()
   // console.log('투데이', tmpDate, tmpDay)
@@ -131,11 +191,12 @@ const prevMonth = () => {
   if(tmpYear == todayyear && tmpMonth == todaymonth){
     selectedDate = { year : todayyear, month : todaymonth + 1, date: todaydate, day : todayday };
     // console.log('실행됨1')
+    tmpDate = todaydate
   }else{
     selectedDate = { year : tmpYear, month : tmpMonth + 1, date: tmpDate, day : tmpDay };
   }
   // console.log(selectedDate)
-  renderCalendar()
+  todoGet(tmpYear, tmpMonth + 1, tmpDate)
 }
 
 const nextMonth = () => {
@@ -144,7 +205,7 @@ const nextMonth = () => {
   const tmpYear = theDay.getFullYear()
   const tmpMonth = theDay.getMonth()
   // const tmpDate = theDay.getDate()
-  const tmpDate = new Date(tmpYear, tmpMonth, 1).getDate()
+  let tmpDate = new Date(tmpYear, tmpMonth, 1).getDate()
   // const tmpDay = theDay.getDay()
   const tmpDay = new Date(tmpYear, tmpMonth, 1).getDay()
   // console.log('투데이', tmpDate, tmpDay)
@@ -152,12 +213,13 @@ const nextMonth = () => {
   if(tmpYear == todayyear && tmpMonth == todaymonth){
     selectedDate = { year : todayyear, month : todaymonth + 1, date: todaydate, day : todayday };
     // console.log('실행됨2')
+    tmpDate = todaydate
   }else{
     selectedDate = { year : tmpYear, month : tmpMonth + 1, date: tmpDate, day : tmpDay };
   }
   // console.log(selectedDate)
   // selectedDate = null
-  renderCalendar()
+  todoGet(tmpYear, tmpMonth + 1 , tmpDate)
 }
 
 const goToday = () => {
@@ -169,13 +231,16 @@ const goToday = () => {
   selectedDate = { year : tmpYear, month : tmpMonth + 1, date: tmpDate, day : tmpDay };
   // console.log(selectedDate)
   // selectedDate = null
-  renderCalendar()
+  todoGet(tmpYear, tmpMonth + 1, tmpDate)
 }
 
 const checkTODO = (year, month, selectDate, day) => {
   // console.log(`${year}.${month}.${selectDate} (${dayToStr[day]})`);
   selectedDate = { year, month, date: selectDate, day };
-  renderCalendar();
+  todoGet(year, month, selectDate);
+  
 }
 
 goToday()
+
+// todoGet(todayyear, todaymonth + 1, todaydate)

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>일정</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/todos.css">
+</head>
+<body>
+  <div>
+    <h1>읭</h1>
+    <h1>Todo Detail</h1>
+    <p><%= data.title %></p>
+    <p id="content">내용 : <%= data.content %></p>
+    <p id="location">장소 : <%= data.location %></p>
+    <p>상태 : <%= data.status %></p>
+    <p>시작일 : <%= data.start_date %> <%= data.start_time %></p>
+    <!-- <p>Start Time : </p> -->
+    <p>종료일 : <%= data.end_date %> <%= data.end_time %></p>
+    <!-- <p>End Time : </p> -->
+  </div>
+  <form action="/">
+    <button>메인으로</button>
+  </form>
+  <script>
+    const content_text = "<%= data.content %>" || "내용 미입력";
+    const location_text = "<%= data.location %>" || "장소 미입력";
+    const content1 = document.querySelector('#content');
+    content1.innerText = "내용 : " + content_text;
+    const location1 = document.querySelector('#location');
+    location1.innerText = "장소 : " + location_text;
+  </script>
+  <!-- <script src="/src/todos.js"></script> -->
+</body>
+</html>

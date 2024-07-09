@@ -34,10 +34,24 @@
   align-items: center;
 }
 
+.align-items-start{
+  align-items:start;
+}
+.justify-content-center{
+  justify-content: center;
+}
+
 .center{
   justify-content: center;
   align-items: center;
 }
 .m_r_1rem{
   margin-right: 1rem;
+}
+.m_l_2rem{
+  margin-left: 2rem;
+}
+
+.cursor-pointer{
+  cursor: pointer;
 }
